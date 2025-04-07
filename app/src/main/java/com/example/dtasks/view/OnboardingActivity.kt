@@ -1,4 +1,4 @@
-package com.example.dtasks
+package com.example.dtasks.view
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.dtasks.R
 import com.example.dtasks.databinding.ActivityOnboardingBinding
 
 class OnboardingActivity : AppCompatActivity() {
