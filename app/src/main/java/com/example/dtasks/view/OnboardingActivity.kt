@@ -20,7 +20,7 @@ class OnboardingActivity : AppCompatActivity() {
 
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+/*
         setSupportActionBar(binding.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_onboarding)
@@ -32,11 +32,14 @@ class OnboardingActivity : AppCompatActivity() {
                 .setAction("Action", null)
                 .setAnchorView(R.id.fab).show()
         }
+*/
     }
 
+/*
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_onboarding)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+*/
 }

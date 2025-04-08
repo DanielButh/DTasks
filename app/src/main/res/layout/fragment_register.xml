@@ -13,7 +13,7 @@
         android:layout_weight="1">
 
         <Button
-            android:id="@+id/iconButton"
+            android:id="@+id/backIB"
             style="?attr/materialIconButtonStyle"
             android:layout_width="24dp"
             android:layout_height="24dp"
@@ -33,7 +33,7 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/task"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iconButton"
+            app:layout_constraintTop_toBottomOf="@+id/backIB"
             app:tint="#FFFFFF" />
 
         <TextView
