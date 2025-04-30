@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "704078237819",
+    "project_id": "dtasks-24284",
+    "storage_bucket": "dtasks-24284.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704078237819:android:8046146db90ecff55712de",
+        "android_client_info": {
+          "package_name": "com.example.dtasks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTlamQy3VN_B64v647_9ZMBDDXUYGmZhY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
