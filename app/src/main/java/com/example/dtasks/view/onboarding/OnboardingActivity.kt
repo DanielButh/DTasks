@@ -1,16 +1,13 @@
-package com.example.dtasks.view
+package com.example.dtasks.view.onboarding
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.dtasks.R
 import com.example.dtasks.databinding.ActivityOnboardingBinding
+import com.example.dtasks.utils.FragmentCommunicator
 
-class OnboardingActivity : AppCompatActivity() {
+class OnboardingActivity : AppCompatActivity(), FragmentCommunicator {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityOnboardingBinding
@@ -42,4 +39,8 @@ class OnboardingActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 */
+
+    override fun showLoader(value: Boolean) {
+        binding.loaderContainerView.visibility = if (value) View.VISIBLE else View.GONE
+    }
 }
