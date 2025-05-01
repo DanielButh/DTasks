@@ -33,6 +33,7 @@ class RegisterFragment : Fragment() {
     ): View {
 
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        communicator = requireActivity() as OnboardingActivity
         setupView()
         setupObservers()
         return binding.root

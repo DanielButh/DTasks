@@ -1,6 +1,7 @@
 package com.example.dtasks.view.list
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -9,8 +10,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.dtasks.R
 import com.example.dtasks.databinding.ActivityListBinding
+import com.example.dtasks.utils.FragmentCommunicator
 
-class ListActivity : AppCompatActivity() {
+class ListActivity : AppCompatActivity(), FragmentCommunicator {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityListBinding
@@ -20,7 +22,7 @@ class ListActivity : AppCompatActivity() {
 
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+/*
         setSupportActionBar(binding.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_list)
@@ -32,11 +34,17 @@ class ListActivity : AppCompatActivity() {
                 .setAction("Action", null)
                 .setAnchorView(R.id.fab).show()
         }
-    }
+        */
 
+    }
+/*
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_list)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+*/
+    override fun showLoader(value: Boolean) {
+    binding.loaderContainerView.visibility = if (value) View.VISIBLE else View.GONE
     }
 }

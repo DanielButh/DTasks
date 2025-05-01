@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.dtasks.R
 import com.example.dtasks.databinding.FragmentTasksBinding
+import com.example.dtasks.utils.FragmentCommunicator
 
-/**
+ /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class TasksFragment : Fragment() {
@@ -19,6 +20,7 @@ class TasksFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var communicator: FragmentCommunicator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +28,7 @@ class TasksFragment : Fragment() {
     ): View {
 
         _binding = FragmentTasksBinding.inflate(inflater, container, false)
+        communicator = requireActivity() as ListActivity
         setupView()
         return binding.root
 

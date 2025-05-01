@@ -36,6 +36,7 @@ class LoginFragment : Fragment() {
     ): View {
 
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        communicator = requireActivity() as OnboardingActivity
         setupView()
         setupObservers()
         return binding.root
@@ -56,26 +57,26 @@ class LoginFragment : Fragment() {
         viewModel.loaderState.observe(viewLifecycleOwner) { loaderState ->
             communicator.showLoader(loaderState)
         }
-        viewModel.sessionValid.observe(viewLifecycleOwner) {sessionValid ->
+        viewModel.sessionValid.observe(viewLifecycleOwner) { sessionValid ->
             if (sessionValid) {
                 val intent = Intent(activity, ListActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
             } else {
-                Toast.makeText(activity, "invalid access", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Ingreso invalido", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun requestLogin() {
         if (binding.emailTIET.text.toString().isNotEmpty()
-            && binding.passwordTIET.text.toString().isNotEmpty()){
+            && binding.passwordTIET.text.toString().isNotEmpty()) {
             isValid = true
         } else {
             isValid = false
         }
 
-        if (isValid){
+        if (isValid) {
             viewModel.requestLogin(
                 binding.emailTIET.text.toString(),
                 binding.passwordTIET.text.toString()
