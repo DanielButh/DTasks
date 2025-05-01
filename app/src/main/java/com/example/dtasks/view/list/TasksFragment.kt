@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.dtasks.R
 import com.example.dtasks.databinding.FragmentTasksBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class TasksFragment : Fragment() {
 
     private var _binding: FragmentTasksBinding? = null
 
@@ -25,8 +26,15 @@ class FirstFragment : Fragment() {
     ): View {
 
         _binding = FragmentTasksBinding.inflate(inflater, container, false)
+        setupView()
         return binding.root
 
+    }
+
+    private fun setupView() {
+        binding.AddButton.setOnClickListener {
+            findNavController().navigate(R.id.action_TasksFragment_to_AddTaskFragment)
+        }
     }
 
     override fun onDestroyView() {
