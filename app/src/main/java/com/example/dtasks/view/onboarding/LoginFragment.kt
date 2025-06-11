@@ -15,10 +15,9 @@ import com.example.dtasks.databinding.FragmentLoginBinding
 import com.example.dtasks.utils.FragmentCommunicator
 import com.example.dtasks.view.list.ListActivity
 import com.example.dtasks.viewModel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null

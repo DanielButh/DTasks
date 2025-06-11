@@ -12,10 +12,9 @@ import com.example.dtasks.R
 import com.example.dtasks.databinding.FragmentRegisterBinding
 import com.example.dtasks.utils.FragmentCommunicator
 import com.example.staysunny.viewModel.RegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
