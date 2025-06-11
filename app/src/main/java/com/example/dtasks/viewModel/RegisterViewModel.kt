@@ -5,11 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.dtasks.core.ResultWrapper
+import com.example.dtasks.network.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class RegisterViewModel: ViewModel() {
+    private val repository = UserRepository()
+
     private val _loaderState = MutableLiveData<Boolean>()
     val loaderState: LiveData<Boolean>
         get() = _loaderState
@@ -18,21 +22,20 @@ class RegisterViewModel: ViewModel() {
     val createdUser: LiveData<Boolean>
         get() = _createdUser
 
-    private val firebase = FirebaseAuth.getInstance()
-
     fun requestRegister(email: String, password: String) {
         _loaderState.value = true
         _createdUser.value = false
 
         viewModelScope.launch {
-            val result = firebase.createUserWithEmailAndPassword(email, password).await()
-            _loaderState.value = false
-
-            result.user?.let {
-                Log.i("Firebase", "Se puedo crear el usuario")
-                _createdUser.value = true
-            } ?: run {
-                Log.e("Firebase", "Ocurrió un problema")
+            when(val result = repository.register(email, password)) {
+                is ResultWrapper.Success -> {
+                    _loaderState.value = false
+                    _createdUser.value = true
+                }
+                is ResultWrapper.Error -> {
+                    _loaderState.value = false
+                    val errorMessage = result.exception.message
+                }
             }
         }
     }
