@@ -33,6 +33,11 @@
         android:name="com.example.dtasks.view.list.TaskDetailFragment"
         android:label="TaskDetailFragment"
         tools:layout="@layout/fragment_task_detail">
+
+        <argument
+            android:name="taskId"
+            app:argType="string"/>
+
         <action
             android:id="@+id/action_TaskDetailFragment_to_TasksFragment"
             app:destination="@id/TasksFragment" />

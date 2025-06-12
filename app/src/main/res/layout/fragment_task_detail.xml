@@ -87,7 +87,7 @@
         android:layout_marginBottom="16dp"
         android:hint="@string/fecha"
         app:boxBackgroundColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/updateButton"
+        app:layout_constraintBottom_toTopOf="@+id/deleteButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -100,7 +100,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/updateButton"
+        android:id="@+id/deleteButton"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginStart="16dp"

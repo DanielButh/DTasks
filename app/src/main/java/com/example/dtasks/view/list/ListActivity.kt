@@ -11,7 +11,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.dtasks.R
 import com.example.dtasks.databinding.ActivityListBinding
 import com.example.dtasks.utils.FragmentCommunicator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ListActivity : AppCompatActivity(), FragmentCommunicator {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
