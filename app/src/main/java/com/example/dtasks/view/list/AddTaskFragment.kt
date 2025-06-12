@@ -5,20 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.dtasks.R
 import com.example.dtasks.databinding.FragmentAddTaskBinding
+import com.example.dtasks.utils.FragmentCommunicator
+import com.example.dtasks.viewModel.list.AddTaskViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import java.util.Date
+import java.util.UUID
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
+@AndroidEntryPoint
 class AddTaskFragment : Fragment() {
 
     private var _binding: FragmentAddTaskBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var communicator: FragmentCommunicator
+    private val viewModel by viewModels<AddTaskViewModel>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,8 +36,31 @@ class AddTaskFragment : Fragment() {
     }
 
     private fun setupView() {
+        binding.addButton.setOnClickListener {
+            val id = UUID.randomUUID().toString()
+
+            viewModel.createTaskInfo(id,
+                binding.taskNameTIET.text.toString(),
+                binding.taskDescriptionTIET.text.toString(),
+                Date())
+        }
+
         binding.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_AddTaskFragment_to_TasksFragment)
+        }
+
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        viewModel.loaderState.observe(viewLifecycleOwner) { loaderState ->
+            communicator.showLoader(loaderState)
+        }
+
+        viewModel.operationSuccess.observe(viewLifecycleOwner) { operationSuccess ->
+            if (operationSuccess) {
+                findNavController().navigate(R.id.action_AddTaskFragment_to_TasksFragment)
+            }
         }
     }
 
