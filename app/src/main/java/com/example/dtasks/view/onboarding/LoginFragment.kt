@@ -62,7 +62,7 @@ class LoginFragment : Fragment() {
                 startActivity(intent)
                 activity?.finish()
             } else {
-                Toast.makeText(activity, "Ingreso invalido", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(activity, "Ingreso invalido", Toast.LENGTH_SHORT).show()
             }
         }
     }

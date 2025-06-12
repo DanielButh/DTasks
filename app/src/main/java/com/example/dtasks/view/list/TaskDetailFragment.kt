@@ -2,6 +2,7 @@ package com.example.dtasks.view.list
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.example.dtasks.model.Task
 import com.example.dtasks.utils.FragmentCommunicator
 import com.example.dtasks.viewModel.list.TaskDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -53,13 +55,19 @@ class TaskDetailFragment : Fragment() {
             isFocusable = false
             isClickable = true
         }
-
         binding.saveButton.setOnClickListener {
+            val dateString = binding.taskDateTIET.text.toString()
+            val parsedDate: Date = try {
+                format.parse(dateString) ?: Date()
+            } catch (e: ParseException) {
+                Log.e("TaskDetailFragment", "Error al parsear la fecha: ${e.message}")
+                Date()
+            }
             viewModel.updateTask(
                 taskId?: "",
                 binding.taskNameTIET.text.toString(),
                 binding.taskDescriptionTIET.text.toString(),
-                format.parse(binding.taskDateTIET.text.toString()) ?: Date())
+                parsedDate)
         }
 
         binding.taskDateTIET.setOnClickListener {
@@ -105,7 +113,7 @@ class TaskDetailFragment : Fragment() {
         binding.apply {
             taskNameTIET.setText(task.name)
             taskDescriptionTIET.setText(task.description)
-            taskDateTIET.setText(task.date.toString())
+            taskDateTIET.setText(format.format(task.date))
 
         }
     }
